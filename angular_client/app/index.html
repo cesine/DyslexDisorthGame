@@ -6,17 +6,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="/bower_components/fielddb-angular/dist/styles/vendor.css" />
-    <link rel="stylesheet" href="/bower_components/fielddb-angular/dist/styles/main.css" />
-    <link rel="stylesheet" href="/bower_components/nvd3/nv.d3.css">
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="/styles/main.css">
-    <!-- endbuild -->
+
+   <link rel="stylesheet" href="/styles/vendor.css">
+   <link rel="stylesheet" href="/styles/main.css">
+
   </head>
   <body ng-app="adminDashboardApp" ng-cloak ng-class="{dyslexdisorthbody: !application.authentication.user.authenticated, resultsbody: application.authentication.user.authenticated}" ng-controller="FieldDBController">
     <!--[if lt IE 7]>
@@ -307,9 +300,9 @@
             </span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="corpus in application.authentication.user.corpora._collection">
-              <a href="{{application.basePathname}}/{{corpus.owner}}/{{corpus.titleAsUrl}}">
-                <i class="fa fa-cloud"></i> {{corpus.title}}
+            <li ng-repeat="dbname in application.authentication.user.accessibleDBS">
+              <a href="/{{dbname}}">
+                <i class="fa fa-cloud"></i> {{dbname}}
               </a>
             </li>
           </ul>
@@ -360,33 +353,12 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
-    <script src="/bower_components/es5-shim/es5-shim.js"></script>
-    <script src="/bower_components/json3/lib/json3.min.js"></script>
+    <script src="/scripts/oldieshim.js"></script>
     <![endif]-->
-    <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
+    <script src="/scripts/vendor.js"></script>
 
-    <script src="/bower_components/fielddb-angular/dist/scripts/vendor.js"></script>
-    <script src="/bower_components/fielddb-angular/dist/scripts/scripts.js"></script>
-    <script src="/bower_components/fielddb-angular/dist/scripts/templates.js"></script>
-    <script src="/bower_components/d3/d3.js"></script>
-    <script src="/bower_components/nvd3/nv.d3.js"></script> <!-- or use another assembly -->
-    <script src="/bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-        <script src="/scripts/customization.js"></script>
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="/scripts/app.js"></script>
-        <script src="/scripts/templates.js"></script>
-        <script src="/scripts/controllers/main.js"></script>
-        <script src="/scripts/controllers/SAILSReportController.js"></script>
-        <script src="scripts/controllers/signup.js"></script>
-        <!-- endbuild -->
+        <script src="/scripts/scripts.js"></script>
 </body>
 </html>
